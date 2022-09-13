@@ -27,7 +27,7 @@ def generate_plot(plot):
 
 response = openai.Completion.create(
     model="text-davinci-002",
-    prompt=generate_plot(plot)
+    prompt=generate_plot(plot),
     temperature=1,
     max_tokens = 3500,
 )
