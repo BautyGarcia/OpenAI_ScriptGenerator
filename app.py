@@ -26,7 +26,7 @@ def generate_plot(plot):
     return "From a given movie plot, create a script that could fit in the movie between the characters you can identify from the plot:" + plot
 
 response = openai.Completion.create(
-    engine="davinci",
+    engine="text-davinci-002",
     prompt=generate_plot(plot),
     temperature=0.9,
     max_tokens=150,
