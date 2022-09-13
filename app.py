@@ -22,11 +22,13 @@ plot = ""
 for a in range(3):
     plot += movie['plot'][a]
 
+print(plot)
+print("Resultado: \n")
 response = openai.Completion.create(
     model="text-davinci-002",
-    prompt="From a given movie plot, create a script between the movie characters changing that given movie plot: " + plot,
-    temperature=0.7,
-    max_tokens=256,
+    prompt="Write a script with speechlines from a given movie plot between the characters: \n" + plot + "\n",
+    temperature=1,
+    max_tokens=3500,
     top_p=1,
     frequency_penalty=0,
     presence_penalty=0
