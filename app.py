@@ -32,4 +32,7 @@ response = openai.Completion.create(
     max_tokens = 3500,
 )
 
-st.write(response.choices[0].text)
+if response:
+    st.write(response.choices[0].text)
+else:
+    st.write("No response")
