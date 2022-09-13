@@ -14,6 +14,8 @@ movieID = moviesInfo[0].movieID
 
 movie = IMDB.get_movie(movieID)
 
+plot = ""
+
 for a in range(5):
     plot += movie['plot'][a]
 
