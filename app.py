@@ -1,8 +1,8 @@
 import streamlit as st
 import openai
-import IMDbPY as imdb
+import imdb
 
-imdb = imdb.IMDb()
+IMDB = imdb.IMDb()
 
 movieName = st.text_input("Enter a movie name")
 
