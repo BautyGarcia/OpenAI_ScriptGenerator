@@ -24,7 +24,7 @@ for a in range(3):
 
 response = openai.Completion.create(
     model="text-davinci-002",
-    prompt="From a given movie plot, create a script that could fit in the movie between the characters you can identify from the plot: " + plot,
+    prompt="From a given movie plot, create a script between the movie characters changing that given movie plot: " + plot,
     temperature=0.7,
     max_tokens=256,
     top_p=1,
