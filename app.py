@@ -4,9 +4,12 @@ import imdb
 
 IMDB = imdb.IMDb()
 
-openai.api_key = st.text_input("OpenAI API Key")
+with st.form(key='my_form'):
+    openai.api_key = st.text_input("OpenAI API Key")
 
-movieName = st.text_input("Enter a movie name")
+    movieName = st.text_input("Enter a movie name")
+
+    st.form_submit_button(label='Submit')
 
 moviesInfo = IMDB.search_movie(movieName)
 
@@ -19,8 +22,8 @@ plot = ""
 for a in range(3):
     plot += movie['plot'][a]
 
-def generate_prompt(Plot):
-return """From a given movie plot, create a script that could fit in the movie between the characters you can identify from the plot: """ + Plot
+def generate_prompt(plot):
+    return """From a given movie plot, create a script that could fit in the movie between the characters you can identify from the plot: """ + plot
 
 response = openai.Completion.create(
     model="text-davinci-002",
