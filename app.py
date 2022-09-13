@@ -4,14 +4,17 @@ import imdb
 
 IMDB = imdb.IMDb()
 
-movieName = st.text_input("Enter a movie name")
+openai.api_key = st.text_input("OpenAI API Key")
 
-moviesInfo = imdb.search_movie(movieName)
+movieName = st.text_input("Enter a movie name", "Supercool")
+
+moviesInfo = IMDB.search_movie(movieName)
 
 movieID = moviesInfo[0].movieID
 
-movie = imdb.get_movie(movieID)
+movie = IMDB.get_movie(movieID)
 
-movieTitle = movie['title']
+for a in range(5):
+    plot += movie['plot'][a]
 
-st.write(movieTitle)
+st.write(plot)
