@@ -22,12 +22,12 @@ plot = ""
 for a in range(3):
     plot += movie['plot'][a]
 
-def generate_prompt(plot):
-    return """From a given movie plot, create a script that could fit in the movie between the characters you can identify from the plot: """ + plot
+def generate_plot(plot):
+    return "From a given movie plot, create a script that could fit in the movie between the characters you can identify from the plot:" + plot
 
 response = openai.Completion.create(
     model="text-davinci-002",
-    prompt="From a given movie plot, create a script that could fit in the movie between the characters you can identify from the plot:" + plot,
+    prompt=generate_plot(plot)
     temperature=1,
     max_tokens = 3500,
 )
