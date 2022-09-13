@@ -4,7 +4,7 @@ import imdb
 
 IMDB = imdb.IMDb()
 
-with st.form(key='my_form'):
+with st.form(key='InputForm'):
     openai.api_key = st.text_input("OpenAI API Key", type="password")
 
     movieName = st.text_input("Enter a movie name")
@@ -34,4 +34,6 @@ response = openai.Completion.create(
     presence_penalty=0
 )
 
-st.write(response.choices[0].text)
+with st.form(key='OutputForm'):
+    st.write(response.choices[0].text)
+
