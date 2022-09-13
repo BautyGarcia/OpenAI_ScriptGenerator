@@ -36,4 +36,5 @@ response = openai.Completion.create(
 
 with st.form(key='OutputForm'):
     st.write(response.choices[0].text)
+    st.form_submit_button(label='Erase')
 
