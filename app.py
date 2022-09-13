@@ -27,9 +27,9 @@ def generate_prompt(plot):
 
 response = openai.Completion.create(
     model="text-davinci-002",
-    prompt=generate_prompt(plot),
+    prompt="From a given movie plot, create a script that could fit in the movie between the characters you can identify from the plot:" + plot,
     temperature=1,
     max_tokens = 3500,
 )
 
-st.write(response['choices'][0]['text'])
+st.write(response.choices[0].text)
