@@ -29,7 +29,7 @@ response = openai.Completion.create(
     model="text-davinci-002",
     prompt=generate_prompt(plot),
     temperature=1,
-    max_tokens = 4000,
+    max_tokens = 3500,
 )
 
 st.write(response['choices'][0]['text'])
