@@ -5,7 +5,7 @@ import imdb
 IMDB = imdb.IMDb()
 
 with st.form(key='my_form'):
-    openai.api_key = st.text_input("OpenAI API Key")
+    openai.api_key = st.text_input("OpenAI API Key", type="password")
 
     movieName = st.text_input("Enter a movie name")
 
