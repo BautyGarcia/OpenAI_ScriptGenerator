@@ -36,4 +36,4 @@ response = openai.Completion.create(
 )
 
 
-st.write(responss.choices[0].text)
+st.write(response.choices[0].text)
