@@ -5,6 +5,8 @@ import imdb
 IMDB = imdb.IMDb()
 
 with st.form(key='InputForm'):
+    st.markdown("""<a href="https://beta.openai.com/account/api-keys" target="_blank">Don't have one?</a>""", unsafe_allow_html=True,)
+
     openai.api_key = st.text_input("OpenAI API Key", type="password")
 
     movieName = st.text_input("Enter a movie name")
@@ -54,3 +56,11 @@ if movieName != "" and openai.api_key != "":
 else:
     st.success("Please enter a movie name and your OpenAI API Key")
 
+st.footer(
+    """
+    Check out the source code on [GitHub](
+        https://github.com/BautyGarcia/OpenAI_ScriptGenerator
+    )
+    """
+
+)
