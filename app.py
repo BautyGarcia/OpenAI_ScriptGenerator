@@ -11,35 +11,33 @@ with st.form(key='InputForm'):
 
     st.form_submit_button(label='Submit')
 
-moviesInfo = IMDB.search_movie(movieName)
+if movieName != "" and openai.api_key != "":
 
-movieID = moviesInfo[0].movieID
+    moviesInfo = IMDB.search_movie(movieName)
 
-movie = IMDB.get_movie(movieID)
+    movieID = moviesInfo[0].movieID
 
-plot = ""
+    movie = IMDB.get_movie(movieID)
 
-for a in range(3):
-    plot += movie['plot'][a]
+    plot = ""
 
-print(plot)
-print("Resultado: \n")
-response = openai.Completion.create(
-    model="text-davinci-002",
-    prompt="Write a script with speechlines from a given movie plot between the characters: \n" + plot + "\n",
-    temperature=1,
-    max_tokens=3500,
-    top_p=1,
-    frequency_penalty=0,
-    presence_penalty=0
-)
+    for a in range(3):
+        plot += movie['plot'][a]
 
-if movieName == "" and openai.api_key == "":
-    st.success("Please enter a movie name and your OpenAI API Key")
-elif movieName == "":
-    st.success("Please enter a movie name")
-elif openai.api_key == "":
-    st.success("Please enter your OpenAI API Key")
-else:
+    print(plot)
+    print("Resultado: \n")
+    response = openai.Completion.create(
+        model="text-davinci-002",
+        prompt="Write a script with speechlines from a given movie plot between the characters: \n" + plot + "\n",
+        temperature=1,
+        max_tokens=3500,
+        top_p=1,
+        frequency_penalty=0,
+        presence_penalty=0
+    )
+
     st.success(response.choices[0].text)
+
+else:
+    st.success("Please enter a movie name and your OpenAI API Key")
 
