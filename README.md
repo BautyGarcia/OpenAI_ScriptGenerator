@@ -1,7 +1,7 @@
 # OpenAI_ScriptGenerator
 
->Awesome movie script generator based on a given movie implementing IMDbPY API and OpenAI API. 
->Inspired in [OpenAI tutorial](https://beta.openai.com/docs/quickstart). 
+>Awesome movie script generator based on a given movie implementing IMDbPY API and OpenAI API.<br/>
+>Inspired in [OpenAI tutorial](https://beta.openai.com/docs/quickstart).<br/>
 >Hosted in [Streamlit](https://streamlit.io/)
 
 ## Setup
