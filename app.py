@@ -30,7 +30,7 @@ if movieName != "" and openai.api_key != "":
     if language == "English":
         LanPrompt = "Write a script with speechlines from a given movie plot between the characters: \n" + plot + "\n"
     elif language == "Español":
-        LanPrompt = "Escribir un dialogo en español entre los personajes identificados en la trama de la pelicula: \n" + plot + "\n"
+        LanPrompt = "Write a script with speechlines from a given movie plot between the characters and translate it to spanish: \n" + plot + "\n"
 
     st.write(LanPrompt)
 
