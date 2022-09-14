@@ -32,6 +32,8 @@ if movieName != "" and openai.api_key != "":
     elif language == "Español":
         LanPrompt = "Escribir un gion o dialogo entre los personajes identificados en la trama de la pelicula: \n" + plot + "\n"
 
+    st.write(LanPrompt)
+
     response = openai.Completion.create(
         model="text-davinci-002",
         prompt=LanPrompt,
