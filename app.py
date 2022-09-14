@@ -54,12 +54,3 @@ if movieName != "" and openai.api_key != "":
         st.success(LanResponse.choices[0].text)
 else:
     st.success("Please enter a movie name and your OpenAI API Key")
-
-st.footer(
-    """
-    Check out the source code on [GitHub](
-        https://github.com/BautyGarcia/OpenAI_ScriptGenerator
-    )
-    """
-
-)
