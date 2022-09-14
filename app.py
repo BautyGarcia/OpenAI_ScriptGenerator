@@ -34,5 +34,5 @@ response = openai.Completion.create(
     presence_penalty=0
 )
 
-st.sucess(response.choices[0].text)
+st.success(response.choices[0].text)
 
