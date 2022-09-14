@@ -4,10 +4,10 @@ import imdb
 
 IMDB = imdb.IMDb()
 
-label = st.markdown("""<a href="" target="_blank">Don't have one?</a>""", unsafe_allow_html=True)
-
 with st.form(key='InputForm'):
     
+    label = st.markdown("""<a href="" target="_blank">Don't have one?</a>""", unsafe_allow_html=True)
+
     st.write(label)
 
     openai.api_key = st.text_input("OpenAI API Key", type="password")
