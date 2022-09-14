@@ -42,7 +42,7 @@ if movieName != "" and openai.api_key != "":
     else:
         LanResponse = openai.Completion.create(
             model="text-davinci-002",
-            prompt="Translate this into" + language + ": \n" + plot + "\n",
+            prompt="Translate this into" + language + ": \n" + response.choices[0].text + "\n",
             temperature=1,
             max_tokens=3500,
             top_p=1,
