@@ -6,7 +6,9 @@ IMDB = imdb.IMDb()
 
 with st.form(key='InputForm'):
     
-    openai.api_key = st.text_input("OpenAI API Key" + st.markdown("""<a href="https://beta.openai.com/account/api-keys" target="_blank">Don't have one?</a>""", unsafe_allow_html=True,) , type="password")
+    st.Write(st.markdown("""<a href="https://beta.openai.com/account/api-keys" target="_blank">Don't have one?</a>""", unsafe_allow_html=True))
+
+    openai.api_key = st.text_input("OpenAI API Key", type="password")
 
     movieName = st.text_input("Enter a movie name")
 
