@@ -5,8 +5,8 @@ import imdb
 IMDB = imdb.IMDb()
 
 with st.form(key='InputForm'):
-
-    st.write(st.markdown("""<a href="" target="_blank">Don't have one?</a>"""))
+    
+    st.markdown("""<a href="" target="_blank">Don't have one?</a>""", unsafe_allow_html=True)
 
     openai.api_key = st.text_input("OpenAI API Key", type="password")
 
