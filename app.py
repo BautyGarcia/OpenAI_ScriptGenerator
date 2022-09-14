@@ -34,5 +34,12 @@ response = openai.Completion.create(
     presence_penalty=0
 )
 
-st.success(response.choices[0].text)
+if movieName == "" and openai.api_key == "":
+    st.success("Please enter a movie name and your OpenAI API Key")
+elif movieName == "":
+    st.success("Please enter a movie name")
+elif openai.api_key == "":
+    st.success("Please enter your OpenAI API Key")
+else:
+    st.success(response.choices[0].text)
 
