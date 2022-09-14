@@ -9,7 +9,10 @@ with st.form(key='InputForm'):
 
     movieName = st.text_input("Enter a movie name")
 
+    language = st.selectbox("Language", ["English", "Español"])
+
     st.form_submit_button(label='Submit')
+
 
 if movieName != "" and openai.api_key != "":
 
@@ -24,8 +27,11 @@ if movieName != "" and openai.api_key != "":
     for a in range(3):
         plot += movie['plot'][a]
 
-    print(plot)
-    print("Resultado: \n")
+    if language == "English":
+        openai.Language = "en"
+    elif language == "Español":
+        openai.Language = "es"
+        
     response = openai.Completion.create(
         model="text-davinci-002",
         prompt="Write a script with speechlines from a given movie plot between the characters: \n" + plot + "\n",
