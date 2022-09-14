@@ -1,3 +1,4 @@
+from turtle import clear
 import streamlit as st
 import openai
 import imdb
@@ -34,7 +35,7 @@ response = openai.Completion.create(
     presence_penalty=0
 )
 
-with st.form(key='OutputForm'):
-    st.write(response.choices[0].text)
-    st.form_submit_button(label='Erase')
+with st.form(key='OutputForm', clear_on_submit=True):
+    st.text_area("Result", value=response['choices'][0]['text'])
 
+    st.form_submit_button(label='Submit')
