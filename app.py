@@ -27,14 +27,9 @@ if movieName != "" and openai.api_key != "":
     for a in range(2):
         plot += movie['plot'][a]
 
-    if language == "English":
-        LanPrompt = "Write a script with speechlines from a given movie plot between the characters: \n" + plot + "\n"
-    elif language == "Español":
-        LanPrompt = "Write a script with speechlines from a given movie plot between the characters and translate it into Spanish: \n" + plot + "\n"
-
     response = openai.Completion.create(
         model="text-davinci-002",
-        prompt=LanPrompt,
+        prompt="Write a script with speechlines from a given movie plot between the characters: \n" + plot + "\n",
         temperature=1,
         max_tokens=3500,
         top_p=1,
@@ -42,8 +37,20 @@ if movieName != "" and openai.api_key != "":
         presence_penalty=0
     )
 
-    st.success(response.choices[0].text)
+    if language == "English":
+        st.success(response.choices[0].text)
+    else:
+        LanResponse = openai.Completion.create(
+            model="text-davinci-002",
+            prompt="Translate this into" + language + ": \n" + plot + "\n",
+            temperature=1,
+            max_tokens=3500,
+            top_p=1,
+            frequency_penalty=0,
+            presence_penalty=0
+        )
 
+        st.success(LanResponse.choices[0].text)
 else:
     st.success("Please enter a movie name and your OpenAI API Key")
 
