@@ -1,12 +1,14 @@
+#Set up
 import streamlit as st
 import openai
 import imdb
 
 IMDB = imdb.IMDb()
 
+#Input form
 with st.form(key='InputForm'):
     
-    st.markdown("""<a href="" target="_blank">Don't have one?</a>""", unsafe_allow_html=True)
+    st.markdown("""<a href="https://beta.openai.com/account/api-keys" target="_blank">Get your API Key</a>""", unsafe_allow_html=True)
 
     openai.api_key = st.text_input("OpenAI API Key", type="password")
 
@@ -16,9 +18,10 @@ with st.form(key='InputForm'):
 
     st.form_submit_button(label='Submit')
 
-
+#Check if form is filled and start app process. If not, return a message
 if movieName != "" and openai.api_key != "":
 
+    #Get movie plot via IMDB API
     moviesInfo = IMDB.search_movie(movieName)
 
     movieID = moviesInfo[0].movieID
@@ -30,6 +33,7 @@ if movieName != "" and openai.api_key != "":
     for a in range(2):
         plot += movie['plot'][a]
 
+    #Create openai response with prompt
     response = openai.Completion.create(
         model="text-davinci-002",
         prompt="Write a script with speechlines from a given movie plot between the characters: \n" + plot + "\n",
@@ -40,6 +44,8 @@ if movieName != "" and openai.api_key != "":
         presence_penalty=0
     )
 
+    #If another language than english was selected, translate the script into that language.
+    #Else, return the english script
     if language == "English":
         st.success(response.choices[0].text)
     else:
