@@ -14,7 +14,7 @@ with st.form(key='InputForm'):
 
     movieName = st.text_input("Enter a movie name")
 
-    language = st.selectbox("Language", ["English", "Spanish", "French", "German", "Italian", "Japanese", "Portuguese", "Russian", "Chinese"])
+    language = st.selectbox("Language", ["English", "Spanish"])
 
     st.form_submit_button(label='Submit')
 
